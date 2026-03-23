@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Führerschein Express - Recensement TikTok</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .btn-wa { background-color: #25D366; transition: all 0.3s ease; }
+        .btn-wa:hover { background-color: #128C7E; transform: scale(1.02); }
+        input, select { font-size: 16px !important; } 
+    </style>
+</head>
+<body class="bg-slate-900 flex items-center justify-center min-h-screen p-4 font-sans text-slate-800">
+
+    <div class="max-w-md w-full bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border-4 border-blue-600/10">
+        <div class="bg-gradient-to-br from-blue-700 to-blue-900 p-8 text-white text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-full mb-4">
+                <i class="fas fa-car-side text-3xl"></i>
+            </div>
+            <h1 class="text-2xl font-black uppercase tracking-tighter">Führerschein Express</h1>
+            <p class="text-xs font-bold opacity-75 mt-1 tracking-widest uppercase">Service Client TikTok Allemagne</p>
+        </div>
+
+        <div class="p-8">
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-[10px] font-black text-blue-600 uppercase mb-2 tracking-widest">Votre Identité</label>
+                    <input type="text" id="userName" 
+                        class="w-full px-5 py-4 bg-gray-50 border-2 border-gray-100 rounded-2xl focus:border-blue-500 focus:bg-white outline-none transition-all" 
+                        placeholder="Pseudo TikTok ou Nom">
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-black text-blue-600 uppercase mb-2 tracking-widest">Votre Situation</label>
+                    <select id="userNeed" 
+                        class="w-full px-5 py-4 bg-gray-50 border-2 border-gray-100 rounded-2xl focus:border-blue-500 focus:bg-white outline-none appearance-none">
+                        <option value="Nouveau Permis">🚀 Passer le permis</option>
+                        <option value="Échec Examen">❌ Échec à l'examen</option>
+                        <option value="Besoin MPU">⚖️ Besoin d'un MPU</option>
+                        <option value="Retrait Permis">🚫 Permis suspendu</option>
+                    </select>
+                </div>
+
+                <button onclick="envoyerWhatsApp()" 
+                    class="btn-wa w-full text-white font-black py-5 rounded-2xl shadow-xl flex items-center justify-center gap-3 text-lg uppercase">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                    Valider mon inscription
+                </button>
+            </div>
+
+            <div class="mt-8 text-center">
+                <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Réponse rapide garantie 🇩🇪</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function envoyerWhatsApp() {
+            const nom = document.getElementById('userName').value;
+            const besoin = document.getElementById('userNeed').value;
+            
+            // Ton numéro WhatsApp configuré
+            const tel = "4915750821799"; 
+
+            if (nom.trim() === "") {
+                alert("Veuillez entrer votre nom ou pseudo TikTok pour continuer.");
+                return;
+            }
+
+            // Message formaté pour WhatsApp
+            const message = `*FÜHRERSCHEIN EXPRESS*\n\n` +
+                            `👤 *Client :* ${nom}\n` +
+                            `📋 *Demande :* ${besoin}\n` +
+                            `🔗 *Source :* TikTok\n\n` +
+                            `Bonjour, je souhaite obtenir des informations pour mon permis en Allemagne.`;
+            
+            const lien = `https://wa.me/${tel}?text=${encodeURIComponent(message)}`;
+            
+            window.location.href = lien;
+        }
+    </script>
+
+</body>
+</html>
